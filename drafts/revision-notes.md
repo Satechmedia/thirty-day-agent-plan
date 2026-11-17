@@ -36,3 +36,41 @@ Earn phrase, dropped a "log fees and wins daily" sentence and a redundant "to da
 
 `MAKEFUN_OUTPUT_DIR=out node main.ts` run twice: both outputs have sha256 `33bdc9a5...0634`,
 and `node drafts/count.mjs out/entry.txt` reports 981 code points, VALID.
+
+---
+
+# Revision notes: third pass on plan A
+
+Starting point: 981 code points, 981 bytes, margin 19. Same idea; this pass fixes three
+weaknesses found by reading the plan against the judge's criteria in order.
+
+## Three weaknesses and the fix for each
+
+1. **The day-12 stop rule has no wallet floor (criterion 2, expected money).** The trigger was
+   "under $30 won", which measures winnings, not what the wallet holds. The judge is asked what
+   it would most likely hold on day 30, and the rule never said.
+   *Fix:* cap spending at $15 by day 12, so the wallet is at least $85 at the check. The trigger
+   becomes "wallet under $100" (wins have not covered spend). Below it, no more fees. At or
+   above it, at most the other $15 is spent. Both branches end at $85 or more, and the plan
+   says so.
+2. **The fee budget is buried (criterion 4, concrete).** The DAY 1 line carried four things:
+   parking $70, the $30 split, listing bounties and the drop filter.
+   *Fix:* a MONEY line of its own, three parts split by semicolons: the $70 reserve, the $30
+   budget with its $20 + $10 split and the $2 cap, and the $15 day-12 cap. DAY 1 keeps only
+   the actions.
+3. **The fallback names no price (criteria 3 and 4).** "Fix crypto-paid GitHub issues" did not
+   say what an issue pays, so the fallback branch could not be valued.
+   *Fix:* "GitHub issues with $20+ crypto bounties, 1 PR a day", the same $20 bar the entry
+   rule uses for a paid place.
+
+## What was cut to fit
+
+The first draft of this pass was 1,090 code points, the second 1,033. Cut "46 in all" (MATH
+still says 46 entries) and "22 entries in", shortened the GitHub phrases in WHAT and STOP,
+and changed GOAL's "$70 never at risk" to "floor $85" so it matches the STOP line.
+Result: 999 code points, 999 bytes, margin 1.
+
+## Check
+
+`MAKEFUN_OUTPUT_DIR=out node main.ts` run twice: both outputs have sha256 `920938f1...b7cc`,
+and `node drafts/count.mjs out/entry.txt` reports 999 code points, VALID.
