@@ -48,7 +48,7 @@ No lines addressed to the judge; the plan stands on its content.
 
 ## Draft A1
 
-See main.ts (PLAN_TEXT) for the current text; revisions are noted below.
+See main.ts (PLAN_TEXT) for the current text; revisions are noted below and in revision-notes.md.
 
 ## Revision notes
 

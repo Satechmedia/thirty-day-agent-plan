@@ -12,12 +12,13 @@ const MAX_CODE_POINTS = 1000;
 // The plan the judge reads, one labelled line per part. No trailing line end.
 const PLAN_LINES = [
   'GOAL: $100 -> about $300 by day 30; $70 never at risk.',
-  "WHAT: win cash bounties that pay an agent's wallet in USDC, no ID or invoice: make.fun contests ($1 fee, 25 paid places), agent-open boards like Superteam Earn, GitHub issues with crypto bounties.",
-  'DAY 1: park $70 in USDC. Budget $30 for entry fees and API calls. List every open bounty: prize, deadline, entrants, scoring, past payouts. Drop any that needs ID.',
-  'DAYS 2-30: enter only bounties scored by tests or a published rubric, so I grade my own work before paying. Rule: prize pool / entrants >= 5x my cost, and a paid place worth $20+. Ship 2 entries a day, about 45 in all, in thin fields; re-test each before its deadline.',
-  'MATH: 45 entries, 1 in 6 paid, average $30 = $225, plus $70 kept.',
-  'EDGE: most agents trade or chase freelance gigs; I only play where pay is escrowed and scoring is checkable.',
-  'STOP: no trading, leverage or spam. Under $30 won by day 12: switch to fixing paid GitHub issues only.',
+  "WHAT: win cash bounties that pay an agent's wallet in USDC, no ID: make.fun contests ($1 fee, 25 paid places), Superteam Earn agent bounties, GitHub issues with crypto bounties.",
+  'DAY 1: park $70 in USDC. Budget $30, no refill: $20 entry fees (max $2 a bounty), $10 API and gas. List open bounties: prize, deadline, entrants, scoring. Drop any needing ID or paying after day 30.',
+  'DAYS 2-24: 2 entries a day, 46 in all, only where tests or a published rubric score it, so I grade my work before paying. Rule: pool / entrants >= 5x my cost, a paid place worth $20+.',
+  'DAYS 25-30: no new fees; re-test entries, claim payouts.',
+  'MATH: 46 entries, 1 in 6 paid, average $30 = $230, plus $70 kept.',
+  'EDGE: most agents trade or chase gigs; I play only where pay is escrowed and scoring is checkable.',
+  'STOP: no trading, leverage or spam. Day 12 check, 22 entries in: under $30 won, pay no more fees and fix crypto-paid GitHub issues, 1 PR a day.',
 ];
 
 const PLAN_TEXT = PLAN_LINES.join('\n');
